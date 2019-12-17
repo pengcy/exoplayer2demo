@@ -1,40 +1,40 @@
-Inculde exoplayer library as a dependency in the gradle file.
+#### Inculde exoplayer library as a dependency in the gradle file.
 ```
 implementation 'com.google.android.exoplayer:exoplayer:2.X.X'
 ```
 
-To initialize an instance of ExoPlayer. Context, RenderersFactory and TrackSelector are required, DrmSessionMannager can be null.
+#### To initialize an instance of ExoPlayer. Context, RenderersFactory and TrackSelector are required, DrmSessionMannager can be null.
 ```
 player = ExoPlayerFactory.newSimpleInstance(activity, renderersFactory, trackSelector!!, drmSessionManager)
 ```
 
-To initialize the player with the media source. uri is the video resource link, extension is video type extension, it's needed only if the video link doesn't end with a normal regonizable extension such as .mp4, .m3u8, .mpd, etc.
+#### To initialize the player with the media source. uri is the video resource link, extension is video type extension, it's needed only if the video link doesn't end with a normal regonizable extension such as .mp4, .m3u8, .mpd, etc.
 ```
 val mediaSources = MediaSourceFactory.buildMediaSource(context, uri, extension)
 player.prepare(mediaSource, !haveStartPosition, false)
 ```
 
-To start:
+#### To start:
 ```
 player.playWhenReady = true
 ```
 
-To pause:
+#### To pause:
 ```
 player.playWhenReady = true
 ```
 
-To stop:
+#### To stop:
 ```
 player.stop()
 ```
 
-To jump to a specific positon. It takes an integer representing a time duration in milliseconds, for example, this will bring the video at 30 seconds from the beginning.
+#### To jump to a specific positon. It takes an integer representing a time duration in milliseconds, for example, this will bring the video at 30 seconds from the beginning.
 ```
 player.seekTo(30*1000)
 ```
 
-To select a track, an object of SelectionOverride is needed. The following is an example of selecting the first text track of a video. If the video does have a text track for closed caption, the following will show the closed caption.
+#### To select a track, an object of SelectionOverride is needed. The following is an example of selecting the first text track of a video. If the video does have a text track for closed caption, the following will show the closed caption.
 ```
 val mappedTrackInfo = Assertions.checkNotNull(trackSelector!!.currentMappedTrackInfo)
 val parameters = trackSelector!!.parameters
@@ -61,7 +61,7 @@ for (rendererIndex in 0 until mappedTrackInfo.rendererCount) {
 trackSelector!!.setParameters(builder)
 ```
 
-To remove a track, simply call clearSelectionOverrides on the track selector's builder and disable it. Here is an example to turn off the closed caption by clearing the selection overrides for the text track and disable it.
+#### To remove a track, simply call clearSelectionOverrides on the track selector's builder and disable it. Here is an example to turn off the closed caption by clearing the selection overrides for the text track and disable it.
 ```
 val mappedTrackInfo = Assertions.checkNotNull(trackSelector!!.currentMappedTrackInfo)
 val parameters = trackSelector!!.parameters
@@ -76,4 +76,5 @@ for (rendererIndex in 0 until mappedTrackInfo.rendererCount) {
 trackSelector!!.setParameters(builder)
 ```
 
-More documentation can be found here: https://github.com/google/ExoPlayer
+#### More documentation can be found here 
+https://github.com/google/ExoPlayer
